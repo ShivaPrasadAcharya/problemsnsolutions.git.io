@@ -196,14 +196,467 @@ descriptionBox.addEventListener("change", () => {
 });
   </script>
   <section id="parkingsection">
+   <!DOCTYPE html>
+<html>
+
+<head>
+  <title>InBasket Tips</title>
+  <style>
+    /* set body styles */
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: smaller;
+    }
+
+    /* set form styles */
+    form {
+      margin: 40px auto;
+      max-width: 600px;
+    }
+
+    label {
+      color: #666666;
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    input,
+    textarea {
+      border: 2px solid #cccccc;
+      border-radius: 4px;
+      font-size: 12px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #0070f3;
+      box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.5);
+      outline: none;
+    }
+
+    button {
+      background-color: #0070f3;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 12px;
+      margin: 20px 0;
+      padding: 10px 20px;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #0061c9;
+    }
+
+    #transpose-button {
+      background-color: #b71c1c;
+      margin-right: 10px;
+    }
+
+    #transpose-button:hover {
+      background-color: #8c1b1b;
+    }
+
+    #copy-button {
+      background-color: #0070f3;
+      margin-right: 10px;
+    }
+
+    #copy-button:hover {
+      background-color: #0061c9;
+    }
+
+    #submit-button {
+      background-color: #1b5e20;
+    }
+
+    #submit-button:hover {
+      background-color: #0d530d;
+    }
+
+    /* set code block styles */
+    #code {
+      background-color: #f7f7f7;
+      border-radius: 4px;
+      margin: 40px auto;
+      max-width: 600px;
+      padding: 20px;
+      white-space: pre-wrap;
+    }
+
+    #code code {
+      font-size: 16px;
+    }
+
+    #descriptionBox {
+      background-color: yellow;
+      width: fit-content;
+    }
+
+    #developedby {
+      font-style: italic;
+      color: brown;
+    }
+
+    .link-container {
+      position: fixed;
+      bottom: 95%;
+      left: 0;
+      right: 0;
+      text-align: bottom;
+    }
+
+    /* Style for the links */
+    .link-container a {
+      color: rgba(255, 38, 0, 0.971);
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px;
+      font-size: normal;
+    }
+
+    .links {
+      text-align: right;
+    }
+
+    #searchInput {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      position: fixed;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+ 
+  <form>
+    <div class="links">
+      <a href="https://shivaprasadacharya.github.io/webpagewithforms.git.io/" target="_blank">Webpage with Forms</a>  </div>
+    <a id="TOP"></a><label for="descriptionBox">ParkingText</label>
+    <textarea id="descriptionBox" placeholder="Park your text here"></textarea><br>
+    <label for="h3-input">ID </label>
+    <input type="text" id="h3-input" placeholder="Enter id "><br>
+    <br>
+    <label for="h4-input">Problem</label>
+    <textarea id="h4-input" placeholder="Enter Problems"></textarea>
+    <br>
+    <label for="h5-input">Solution</label>
+    <textarea id="h5-input" placeholder="Enter Solution"></textarea>
+    <br>
+    <label for="h6-input">Source</label>
+    <textarea id="h6-input" placeholder="Enter Source"></textarea>
+    <br>
+    <label for="h7-input">Comment
+    </label>
+    <textarea id="h7-input" placeholder="Enter Comment"></textarea>
+    <label for="h8-input">Keywords</label>
+    <textarea id="h8-input" placeholder="Enter your keywords here"></textarea>
+    <br>
+    <a id="MIDDLE"></a>
+    <button type="button" id="transpose-button">Transpose</button>
+    <button type="button" id="copy-button">Copy to Clipboard</button>
+    <button type="button" id="submit-button">Submit</button>
+    <button type="button" id="download-button">Download Text</button>
+
+  </form>
+  <div id="code"> </div>
+  <script>
+    const h3Input = document.getElementById("h3-input");
+    const h3Element = document.getElementById("h3-element");
+    const h4Input = document.getElementById("h4-input");
+    const h4Element = document.getElementById("h4-element");
+    const h5Input = document.getElementById("h5-input");
+    const h5Element = document.getElementById("h5-element");
+    const h6Input = document.getElementById("h6-input");
+    const h6Element = document.getElementById("h6-element");
+    const h7Input = document.getElementById("h7-input");
+    const h7Element = document.getElementById("h7-element");
+    const h8Input = document.getElementById("h8-input");
+    const h8Element = document.getElementById("h8-element");
+    const copyButton = document.getElementById("copy-button");
+    const generateButton = document.getElementById("submit-button");
+    generateButton.addEventListener("click", () => {
+      const codeElement = document.getElementById("code");
+      codeElement.innerHTML = `<code>&#x003C;table&#x003E;&#x003C;tr&#x003E;&#x003C;td&#x003E;${h3Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h4Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h5Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h6Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h7Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h8Input.value}&#x003C;/td&#x003E;&#x003C;/tr&#x003E;&#x003C;/table&#x003E;</code>`;
+      // Hide all tables except for the one with the matching ID
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText === h3Input.value) {
+          rows[i].style.display = "table-row";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    });
+
+    //aUTOFILL SCRIPT//
+    h3Input.addEventListener("input", () => {
+  const parkingSection = document.getElementById("parkingsection");
+  const rows = parkingSection.getElementsByTagName("tr");
+  let found = false;
+  for (let i = 0; i < rows.length; i++) {
+    const cells = rows[i].getElementsByTagName("td");
+    if (cells[0].innerText === h3Input.value) {
+      found = true;
+      for (let j = 0; j < 5; j++) {
+        [h4Input, h5Input, h6Input, h7Input, h8Input][j].value = cells[j + 1].innerHTML.replace(/</g, "&#x003C;").replace(/>/g, "&#x003E;");
+      }
+      //h3Input.style.color = "green"; // set text color to green for auto-populated value
+      //break;
+    }
+  }
+  if (found) {
+    h3Input.style.backgroundColor = "green";
+    h4Input.style.color = "black";
+    h5Input.style.color = "black";
+    h6Input.style.color = "black";
+    h7Input.style.color = "black";
+    h8Input.style.color = "black";
+  } else {
+    h3Input.style.backgroundColor = "orange";
+    h4Input.style.color = "grey";
+    h5Input.style.color = "grey";
+    h6Input.style.color = "grey";
+    h7Input.style.color = "grey";
+    h8Input.style.color = "grey";
+  }
+});
+
+
+    //Hide//
+    function hideRows() {
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText !== h3Input.value) {
+          rows[i].style.display = "none";
+        }
+      }
+    }
+    //copyscript//
+    copyButton.addEventListener("click", () => {
+      const codeElement = document.getElementById("code");
+      const text = codeElement.innerText;
+      navigator.clipboard.writeText(text);
+      alert("Copied to clipboard!");
+    });
+    const transposeButton = document.getElementById("transpose-button");
+    transposeButton.addEventListener("click", () => {
+      // Get the currently filtered table
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      let filteredTable = null;
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText === h3Input.value) {
+          filteredTable = rows[i].parentNode;
+          break;
+        }
+      }
+      if (!filteredTable) {
+        // No matching table found, do nothing
+        return;
+      }
+      // Transpose the filtered table
+      const rowsArray = Array.from(filteredTable.rows);
+      const columnsArray = rowsArray[0].cells.length > 1 ? Array.from(rowsArray[0].cells) : [rowsArray[0]];
+      const newTable = document.createElement("table");
+      for (let j = 0; j < columnsArray.length; j++) {
+        const newRow = document.createElement("tr");
+        for (let i = 0; i < rowsArray.length; i++) {
+          const newCell = document.createElement("td");
+          const cellHtml = rowsArray[i].cells[j].innerHTML; // get the HTML content of the cell
+          newCell.innerHTML = cellHtml; // set the HTML content of the new cell
+          newRow.appendChild(newCell);
+        }
+        newTable.appendChild(newRow);
+      }
+      // Replace the filtered table with the transposed table
+      filteredTable.parentNode.insertBefore(newTable, filteredTable);
+      filteredTable.parentNode.removeChild(filteredTable);
+    });
+    function addLineBreakAndBold(inputElement) {
+      inputElement.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;br&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+        } else if (event.ctrlKey && event.key === "b") {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;b&#x003E;  &#x003C;/b&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 18, cursorPosition + 18); // Place the cursor inside the <b> tag
+        } else if (event.ctrlKey && event.key === "u") {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;u&#x003E; &#x003C;/u&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 18, cursorPosition + 18); // Place the cursor inside the <u> tag
+        } else if (event.ctrlKey && event.key === 'l') {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;a href=&quot;&quot; target=&quot;&#x5F;&#x62;&#x6C;&#x61;&#x6E;&#x6B;&quot;&#x003E;&#x003C;/a&#x003E;" +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 21, cursorPosition + 21); // Place the cursor inside the href
+
+        } else if (event.ctrlKey && event.key === 'i') {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;i&#x003E; &#x003C;/i&#x003E;" +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 18, cursorPosition + 18); // Place the cursor inside the i
+        } else if (event.ctrlKey && event.key === '0') {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C; &#x003E;" +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 8, cursorPosition + 8); // Place the cursor inside the tag
+        } else if (event.ctrlKey && event.key === '1') {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;/ &#x003E;" +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 9, cursorPosition + 9); // Place the cursor inside the tag
+        }
+
+        else if (event.ctrlKey && event.key === " ") { // Ctrl+Space
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;b&#x003E;&#x003C;u&#x003E; &#x003C;/u&#x003E;&#x003C;/b&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 35, cursorPosition + 35); // Place the cursor inside the <u> tag
+        }
+
+      });
+    }
+    addLineBreakAndBold(h4Input);
+    addLineBreakAndBold(h5Input);
+    addLineBreakAndBold(h6Input);
+    addLineBreakAndBold(h7Input);
+    addLineBreakAndBold(h8Input);
+
+    //download as .text//
+const downloadButton = document.getElementById("download-button");
+downloadButton.addEventListener("click", () => {
+  // Get the table HTML code
+  const tableCode = document.getElementById("code").textContent;
+  // Create a blob from the table code
+  const blob = new Blob([tableCode], {type: "text/plain"});
+  // Create a URL for the blob
+  const url = URL.createObjectURL(blob);
+  // Create a download link
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "table.txt";
+  // Click the link to start the download
+  link.click();
+  // Remove the link and blob
+  link.remove();
+  URL.revokeObjectURL(url);
+});
+
+    //Search fuction script//
+  
+ function searchFunction() {
+  var input, filter, tables, rows, cells, i, j, k, txtValue, match;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  tables = document.getElementsByTagName("table");
+  for (i = 0; i < tables.length; i++) {
+    rows = tables[i].getElementsByTagName("tr");
+    for (j = 0; j < rows.length; j++) {
+      cells = rows[j].getElementsByTagName("td");
+      match = false;
+      for (k = 0; k < cells.length; k++) {
+        txtValue = cells[k].textContent || cells[k].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          rows[j].style.display = "";
+          match = true;
+          cells[k].innerHTML = txtValue.replace(new RegExp(filter, "gi"), function(match) {
+            return "<mark>" + match + "</mark>";
+          });
+        } else {
+          cells[k].innerHTML = txtValue;
+        }
+      }
+      if (!match) {
+        rows[j].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+ 
+  <section id="parkingsection">
+
+    <table><tr><td>001</td><td> 1: Give your brief Introduction.<br> 2.विज्ञान छोडेर कानूनमा किन आउनुभयो? <br> 3.How will match social science and Pure Science?<br> 4. कानून र सरकारी वकील समूहमा कुन समूह रोज्नुहुन्छ र किन?<br> 5. Principle of beneficial construction के हो?<br> 6. MLA र Extradiction मा के फरक छ?<br> 7. सैद्धान्तिक सहमति भनेको के हो र कसरी लिइन्छ?<br> 8. Juristic  Writing लाई पनि International Law को एउटा source मानिन्छ, तर त्यो writing biased छ वा छैन भन्ने कसरी थाहा पाउने सकिन्छ, कुनै Institution छ यसको अध्ययन गर्ने?<br> 9.संविधान र कानूनी सिद्धान्त conflict भयो भने कुन हावी हुन्छ?<br> 10. Unjust Enrichment के हो र यो कसरी थाहा हुन्छ? <br> 11.फलोभोग, माथवर, सुविधाभार<br> Money Laundering<br> Organized Crime<br> </td><td>Documented as dictated by KamalKant Sir and Prakash Bhatta Sir.</td><td></td><td></td><td></td></tr></table>
     <table> <tr> <td><u>Problems:</u><br>राजनीतिमा माफियाकरण:
-      <table> <tr> <td><u>Problems:</u><br><b>राजनीतिमा माफियाकरण:</b>
+> <td><u>Problems:</u><br><b>राजनीतिमा माफियाकरण:</b>
         अपराधिक मानसिकता सहित पैसा कमाउनको लागि पैसा प्रयोग गरेर राज्यसत्तालाई दुस्प्रभावमा पार्ने व्यक्ति माफिया हो। <br>
         उदाहरणः (१) प्रचण्डलाई प्रम बनाउनको निम्ति सांसद खरिदको निम्ति चिनिया व्यक्तिसँग ५० करोड माग<br>
         (२) सेकुरिटि प्रेस खरिदमा गोकुल बास्कोटाले ७० करोड कमिसन माग<br>
         (३) रास्वमा सासंद ढाकाकुमारले स्वास्थ्य मन्त्री बन्नको निम्ति दुर्गा प्रसाईसँग २ करोड माग </td><td><u>Solutions:</u><br>(१) खर्चिलो चुनाव पद्धतिलाई मितव्ययी बनाउने<br>
         (२) उमेद्वार, सांसद र मन्त्रीहरूको Political Morality लाई Boost up गर्ने <br>
-        (३) अनिवार्य र पूर्ण रूपमा सबै आम्दानी र खर्च विद्युतीय माध्यमबाट नै गर्ने <br></tr></table><br>,<a href="" target="_blank"></a><br><u>Keywords:</u><br>Good Governance ,Corruption<a href="" target="_blank"></a><br><u>Keywords:</u>
+        (३) अनिवार्य र पूर्ण रूपमा सबै आम्दानी र खर्च विद्युतीय माध्यमबाट नै गर्ने <br></td><td><a href="" target="_blank"></a> </td> <td>
+       <u>Keywords:</u> Good Governance ,Corruption</td>
+      </section>
+</body>
+
+<footer>
+  <a id="BOTTOM"></a></p>
+  <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search...हरिनाम हरिनाम हरिनामैव केवलम् कलो नास्तैव नास्तैव नास्तैव गतिरन्यथा">
+  <p id="developedby"><u><b>Developed By:</b></u><br> Debaka Timilsina (M.A, M.Ed; LL.B) <br> Shiva Prasad
+    Acharya
+    (M.Sc.; LL.M)<br> श्री अक्षयतृतीया, २०८०
+  <div class="link-container">
+    <a href="#TOP">&#x25B2;</a>
+    <a href="#MIDDLE">X&#772;</a>
+    <a href="#BOTTOM">&#x25BC;</a>
+  </div>
+</footer>
+
+</html>
+<!--format preserved in transpose, autofillwith breaks n bolds, table filtered, this is for phrasesnwords-->
+<!--.-->
   </section>
   <section id="abbrsection">
 
